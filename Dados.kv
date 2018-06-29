@@ -1,0 +1,236 @@
+#:import Factory kivy.factory.Factory
+
+<PopupNames>:
+    id: popupnames
+    size_hint: .5, .5
+    auto_dismiss: False
+    title: 'Integrantes del equipo'
+    title_align: 'center'
+    title_size: '20sp'
+    GridLayout:
+        rows: 2
+        spacing:10
+
+        Label:
+            text_size: self.size
+            font_size: '20sp'
+            halign: 'center'
+            valign: 'center'
+            text: 'Gabriela Carolina Garcia Flores\n Dilsy Gabriela Guillen Castillo\n Paola Maria Lopez Alfaro'
+        BoxLayout:
+            size_hint_y: .3
+            orientation: 'horizontal'
+            spacing: 10
+
+            Button:
+                font_size: '20sp'
+                text: 'De acuerdo'
+                on_press: root.dismiss()
+                on_release: Factory.PopupCust().open()
+
+<PopupCust>:
+    id: popup
+
+    size_hint: .5, .5
+    auto_dismiss: False
+    title: "Apuesta"
+    title_align: "center"
+    title_size: '20sp'
+    GridLayout:
+        rows: 2
+        spacing: 10
+
+        Label:
+            text_size: self.size
+            font_size: '20sp'
+            halign: 'center'
+            valign: 'center'
+            text: 'Desea apostar que en almenos uno de los siguientes 4 tiros va a salir una vez 6?'
+
+        BoxLayout:
+            size_hint_y: .3
+            orientation: 'horizontal'
+            spacing: 10
+
+            Button:
+                text: 'Apostar'
+                font_size: '20sp'
+                on_release: root.dismiss()
+                on_press: popup.betornot(True)
+
+            Button:
+                text: 'No apostar'
+                font_size: '20sp'
+                on_release: root.dismiss()
+                on_press: popup.betornot(False)
+
+
+<Pages>:
+    id: pages
+
+    GridLayout:
+        id: grid
+        rows: 2
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 10
+
+            Image:
+                id: first
+                source: 'png/dice_default.png'
+            Image:
+                id: second
+                source: 'png/dice_default.png'
+            Image:
+                id: third
+                source: 'png/dice_default.png'
+            Image:
+                id: fourth
+                source: 'png/dice_default.png'
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 10
+
+            Button:
+                background_normal: 'png/dice_throw.png'
+                background_down: 'png/dice_throw_dn.png'
+                size_hint: None, None
+                size: 128, 128
+                on_release: pages.throw()
+                pos_hint: {'x': 0.5, 'y': 0.5}
+            Label:
+                id: ganaroperder
+                text: ''
+                color: 0, 0, 0, 1
+                font_size: '40sp'
+
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+
+        GridLayout:
+            rows: 6
+            cols: 2
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "Intentos realizados"
+                font_size: '20sp'
+            Label:
+                id: labeel1
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "0"
+                font_size: '20sp'
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "Intentos apostando"
+                font_size: '20sp'
+            Label:
+                id: labeel2
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "0"
+                font_size: '20sp'
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "Intentos sin apostar"
+                font_size: '20sp'
+            Label:
+                id: labeel3
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "0"
+                font_size: '20sp'
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "Intentos ganados apostando"
+                font_size: '20sp'
+            Label:
+                id: labeel4
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "0"
+                font_size: '20sp'
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "Intentos ganados sin apostar"
+                font_size: '20sp'
+            Label:
+                id: labeel5
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "0"
+                font_size: '20sp'
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "Total ganados"
+                font_size: '20sp'
+            Label:
+                id: labeel6
+                canvas.before:
+                    Color:
+                        rgba: 0.48, 0.48, 0.49, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                text: "0"
+                font_size: '20sp'
+
+        Button:
+            size_hint_y: .3
+            text: "Reiniciar"
+            font_size: '20sp'
+            on_release: pages.reset()
